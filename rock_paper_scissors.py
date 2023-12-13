@@ -47,4 +47,8 @@ rock = Button(root, width=20, height=3, text="ROCK", bg="#daf2f2", fg="black").g
 paper = Button(root, width=20, height=3, text="PAPER", bg="#f7e702", fg="black").grid(row=2, column=2)
 scissor = Button(root, width=20, height=3, text="SCISSOR", bg="#ff8f8f", fg="black").grid(row=2, column=3)
 
+# Messages
+msg = Label(root, font=50, bg="#918f8e", fg="white")
+msg.grid(row=3, column=2)
+
 root.mainloop()
