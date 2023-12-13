@@ -28,4 +28,13 @@ comp_label = Label(root,image=scissors_comp_img, bg="#918f8e")
 user_label.grid(row=1,column=0)
 comp_label.grid(row=1,column=4)
 
+# Scores
+
+userScores = Label(root, text=0, font=100, bg="#918f8e", fg="white")
+compScores = Label(root, text=0, font=100, bg="#918f8e", fg="white")
+
+userScores.grid(row=1, column=1)
+compScores.grid(row=1, column=3)
+
+
 root.mainloop()
