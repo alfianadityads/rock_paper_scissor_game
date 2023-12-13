@@ -55,11 +55,26 @@ compScores.grid(row=1, column=3)
 msg = Label(root, font=50, bg="#918f8e", fg="white")
 msg.grid(row=3, column=2)
 
+# Update messages
+def updateMessage(x):
+    msg['text'] = x
+
+# Update user score
+def updateUserScores():
+    score = int(userScores["text"])
+    score += 1
+    userScores["text"] = str(score)
+
+# Update comp score
+def updateCompScores():
+    score = int(compScores["text"])
+    score += 1
+    compScores["text"] = str(score)
+
 # =====================================================================
 
 # Update Choices
 choices = ["rock", "paper", "scissor"]
-# for user
 def updateChoice(x):
 # for computer
     compChoice = choices[randint(0,2)]
@@ -69,13 +84,15 @@ def updateChoice(x):
         comp_label.configure(image=paper_comp_img)
     else:
         comp_label.configure(image=scissors_comp_img)
-
+# for user
     if x == "rock":
         user_label.configure(image=rock_user_img)
     elif x == "paper":
         user_label.configure(image=paper_user_img)
     else:
         user_label.configure(image=scissors_user_img)
+
+    checkWinner(x, compChoice)
         
 # =====================================================================
 
@@ -85,5 +102,33 @@ paper = Button(root, width=20, height=3, text="PAPER", bg="#f7e702", fg="black",
 scissor = Button(root, width=20, height=3, text="SCISSOR", bg="#ff8f8f", fg="black", command= lambda:updateChoice("scissor")).grid(row=2, column=3)
 
 # =====================================================================
+
+# Check winner
+def checkWinner(user, computer):
+    if user == computer:
+        updateMessage("It's a tie!!")
+    elif user == "rock":
+        if computer == "paper":
+            updateMessage("You lose!!")
+            updateCompScores()
+        else:
+            updateMessage("You win")
+            updateUserScores()
+    elif user == "paper":
+        if computer == "scissor":
+            updateMessage("You lose!!")
+            updateCompScores()
+        else:
+            updateMessage("You win!!")
+            updateUserScores()
+    elif user == "scissor":
+        if computer == "rock":
+            updateMessage("You lose!!")
+            updateCompScores()
+        else:
+            updateMessage("You win!!")
+            updateUserScores()
+    else:
+        pass
 
 root.mainloop()
